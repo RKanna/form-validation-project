@@ -107,3 +107,21 @@ h1 {
   color: red;
   padding-top: 0.7rem;
 }
+.userID {
+  border-color: red;
+}
+.emailID {
+  border-color: red;
+}
+.emailIDGreen {
+  border-color: rgb(1, 37, 1);
+}
+.passCode {
+  border-color: red;
+}
+.passCodeGreen {
+  border-color: rgb(1, 37, 1);
+}
+.userIDGreen {
+  border-color: rgb(1, 37, 1);
+}
