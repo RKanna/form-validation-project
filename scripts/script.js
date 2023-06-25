@@ -37,6 +37,8 @@ formElement.addEventListener("submit", (event) => {
   emailElement.classList.remove('emailIDGreen');
   passwordElement.classList.remove('passCode');
   passwordElement.classList.remove('passCodeGreen');
+  confirmPassEl.classList.remove('error-confirm-pass-red');
+  confirmPassEl.classList.remove('error-confirm-pass-green');
 
 
   
@@ -101,7 +103,12 @@ formElement.addEventListener("submit", (event) => {
       `error-password`
     ).textContent = `Password cannot exceed 16 characters`;
     passwordElement.classList.add('passCode');
-  } else {
+  } else if(passwordElement.value !== confirmPassEl.value){
+    passwordElement.classList.add('passCode');
+  } else if(passwordElement.value === confirmPassEl.value) {
+    passwordElement.classList.add('passCodeGreen');
+  }
+   else {
     passwordElement.classList.add('passCodeGreen');
   }
 
@@ -110,11 +117,16 @@ formElement.addEventListener("submit", (event) => {
 
   if (!confirmPassEl.value) {
     errorConfirmPass.textContent = 'Confirm Password is Mandotory';
+    confirmPassEl.classList.add('error-confirm-pass-red');
     
     
-  } else if(confirmPassEl.value == passwordElement.value) {
+  } else if(confirmPassEl.value === passwordElement.value) {
     document.getElementById('passError-confirm').textContent = 'Success';
+    confirmPassEl.classList.add('error-confirm-pass-green');
   } else if(confirmPassEl.value !== passwordElement.value) {
     errorConfirmPass.textContent = 'Password Mismatch';
+    confirmPassEl.classList.add('error-confirm-pass-red');
+  } else {
+    confirmPassEl.classList.add('error-confirm-pass-green');
   }
 });
