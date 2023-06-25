@@ -5,6 +5,8 @@ const formElement = document.getElementById(`form`);
 const userNameElement = document.getElementById(`username`);
 const emailElement = document.getElementById(`email`);
 const passwordElement = document.getElementById(`password`);
+const confirmPassEl = document.getElementById(`confirm-password`);
+const errorConfirmPass = document.getElementById(`passError-confirm`);
 //Assigning input and output variables button
 const buttonElement = document.getElementById(`btn`);
 //functions
@@ -28,12 +30,21 @@ formElement.addEventListener("submit", (event) => {
   document.getElementById(`error-username`).textContent = "";
   document.getElementById(`error-email`).textContent = "";
   document.getElementById(`error-password`).textContent = "";
+  document.getElementById('passError-confirm').textContent = "";
   userNameElement.classList.remove('userID');
   userNameElement.classList.remove('userIDGreen');
   emailElement.classList.remove('emailID');
   emailElement.classList.remove('emailIDGreen');
   passwordElement.classList.remove('passCode');
   passwordElement.classList.remove('passCodeGreen');
+
+
+  
+
+
+
+
+
   if (!username) {
     document.getElementById(
       `error-username`
@@ -92,5 +103,18 @@ formElement.addEventListener("submit", (event) => {
     passwordElement.classList.add('passCode');
   } else {
     passwordElement.classList.add('passCodeGreen');
+  }
+
+
+
+
+  if (!confirmPassEl.value) {
+    errorConfirmPass.textContent = 'Confirm Password is Mandotory';
+    
+    
+  } else if(confirmPassEl.value == passwordElement.value) {
+    document.getElementById('passError-confirm').textContent = 'Success';
+  } else if(confirmPassEl.value !== passwordElement.value) {
+    errorConfirmPass.textContent = 'Password Mismatch';
   }
 });
